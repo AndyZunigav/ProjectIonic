@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>crear-usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Crear Usuario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form (ngSubmit)="crearUsuario()">
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input type="email" [(ngModel)]="mdl_mail" name="correo" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="mdl_pass" name="contrasena" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="mdl_nombre" name="nombre" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="mdl_apellido" name="apellido" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Carrera</ion-label>
+        <ion-input type="text" [(ngModel)]="mdl_carrera" name="carrera" required></ion-input>
+      </ion-item>
+  
+      <ion-button (click)="almacenarUsuario()" expand="full" type="submit"></ion-button>
+    </form>
+</ion-content>

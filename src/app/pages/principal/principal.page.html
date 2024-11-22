@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> <!-- Botón de menú -->
+    </ion-buttons>
+    <ion-title> {{ nombreUsuario }} {{ apellidoUsuario }} </ion-title>
+    <ion-buttons slot="end">
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-menu side="start" menuId="main-menu" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="mostrarSedes()">Sedes</ion-item> <!-- Opción para mostrar sedes -->
+      <ion-item (click)="mostrarFeriados()">Feriados</ion-item> <!-- Opción para mostrar feriados -->
+      <ion-item (click)="mostrarCuenta()">Cuenta</ion-item> <!-- Opción para mostrar cuenta -->
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content [fullscreen]="true" id="main-content">
+  
+  <!-- Lista de sedes, visible si mostrarSedesFlag es verdadero -->
+  <ion-list *ngIf="mostrarSedesFlag">
+    <ion-item *ngFor="let sede of lista_sede">
+      <ion-thumbnail slot="start">
+        <img [src]="sede.imagen" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ sede.nombre }}</h2>
+        <p>{{ sede.direccion }}</p>
+        <p>{{ sede.telefono }}</p>
+        <p>{{ sede.horario }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Lista de feriados, visible si mostrarFeriadosFlag es verdadero -->
+  <ion-list *ngIf="mostrarFeriadosFlag">
+    <ion-item *ngFor="let feriado of lista_feriados">
+      <ion-label>
+        <h2>{{ feriado.nombre }}</h2>
+        <p>Fecha: {{ feriado.fecha }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Formulario de cuenta, visible si mostrarCuentaFlag es verdadero -->
+  <ion-list *ngIf="mostrarCuentaFlag">
+    <ion-item>
+      <ion-card-title>{{ nombreUsuario }} {{ apellidoUsuario }}</ion-card-title>
+      
+    </ion-item>
+
+    <ion-item>
+      
+      <p><strong></strong> {{ correoUsuario }}</p>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="stacked">Carrera</ion-label>
+      <ion-input [(ngModel)]="carreraUsuario" placeholder="Carrera"></ion-input>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label position="stacked">Confirmar Contraseña</ion-label>
+      <ion-input [(ngModel)]="nuevaContrasena" type="password" placeholder="Nueva Contraseña"></ion-input>
+    </ion-item>
+    
+    <ion-button expand="block" (click)="modificarUsuario()">Guardar Cambios</ion-button>
+  </ion-list>
+</ion-content>
+

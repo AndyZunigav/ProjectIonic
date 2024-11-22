@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Logn </ion-title>
+    <ion-label class="titulo">Cantidad Usuario: {{cantidad}}</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-input [(ngModel)]="mdl_correo" label="Correo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="mdl_contrasena" label="Contraseña" type="password"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="login()">Iniciar Sesión</ion-button>
+  <ion-button expand="block" (click)="navegarCrearUsuario()">Crear Usuario</ion-button>
+
+  <ion-alert
+    [isOpen]="isAlertOpen"
+    header="Información"
+    message="Credenciales Inválidas"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+  ></ion-alert>
+</ion-content>
+
